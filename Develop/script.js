@@ -5,10 +5,7 @@ const speccasecharcodes = arrayLowToHigh(33, 47).concat(
   arrayLowToHigh(58, 64)
 ).concat(
   arrayLowToHigh(91, 96)
-).concat(
-  arrayLowToHigh(123. 126)
 )
-
 
 // Calls Button from HTML
 var generateBtn = document.querySelector("#generate");
@@ -28,15 +25,30 @@ function generatePassword () {
     return
   }
 
-  let charCodes = lowercharcodes
-  
-
-
-
   var passlower = window.confirm("Do you want to include lowercase characters in your password?")
   var passupper = window.confirm("Do you want to include Uppercase characters in your passwrod?")
-  var passnum = window.confirm("Do you want numbers included in your password?")
+  var passnum = window.confirm("Do you want to include numbers in your password?")
   var passspec = window.confirm("Do you want to include special characters in your password?")
+
+  var userChoices = []
+  
+  let charCodes = lowercharcodes
+
+  if (passupper === true) {
+    userChoices.push(uppercharcodes)
+  }
+
+  if (passnum === true) {
+    userChoices.push(numcharcodes)
+  }
+
+  if (passspec === true) {
+    userChoices.push(speccasecharcodes)
+  }
+
+
+
+  console.log(userChoices)
 }
 
 function arrayLowToHigh(low, high) {
