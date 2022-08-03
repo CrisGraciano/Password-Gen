@@ -14,24 +14,29 @@ var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", writePassword);
 
 // After button is clicked, an alert window should be brought up
+
 // Assignment code here
 function generatePassword () {
-
+// Asks user in window how long password should be
   var passlength = window.prompt("Password length? 8-128 characters")
   var passlength = parseInt(passlength)
 
+// prompts error if info entered is not a number or within range
   if (isNaN(passlength) || passlength < 8 || passlength > 120) {
     window.alert("Please enter a valid number 8-128!")
     return
   }
 
+// Windows asking if user wants lowercase, uppercase, number or special characters in the generated password
   var passlower = window.confirm("Do you want to include lowercase characters in your password?")
   var passupper = window.confirm("Do you want to include Uppercase characters in your passwrod?")
   var passnum = window.confirm("Do you want to include numbers in your password?")
   var passspec = window.confirm("Do you want to include special characters in your password?")
 
+// empty array to hold the choices of the user on questions above
   var userChoices = []
-  
+ 
+// true false statements to questions in order to know which characters to include in final password
   let charCodes = lowercharcodes
 
   if (passupper === true) {
@@ -51,6 +56,7 @@ function generatePassword () {
   console.log(userChoices)
 }
 
+// function looping through the character library
 function arrayLowToHigh(low, high) {
   const array = []
   for (let i = low; i <= high; i++) {
