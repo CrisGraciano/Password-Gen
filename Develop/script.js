@@ -1,11 +1,13 @@
-const lowercharcodes = arrayLowToHigh(97, 122)
-const uppercharcodes = arrayLowToHigh(65, 90)
-const numcharcodes = arrayLowToHigh(48, 57)
-const speccasecharcodes = arrayLowToHigh(33, 47).concat(
-  arrayLowToHigh(58, 64)
-).concat(
-  arrayLowToHigh(91, 96)
-)
+// Tried to use the character codes before typing lists for characters
+
+//const lowercharcodes = arrayLowToHigh(97, 122)
+//const uppercharcodes = arrayLowToHigh(65, 90)
+//const numcharcodes = arrayLowToHigh(48, 57)
+//const speccasecharcodes = arrayLowToHigh(33, 47).concat(
+//  arrayLowToHigh(58, 64)
+//).concat(
+//  arrayLowToHigh(91, 96)
+//)
 
 // Calls Button from HTML
 var generateBtn = document.querySelector("#generate");
@@ -32,26 +34,38 @@ function generatePassword () {
   var passupper = window.confirm("Do you want to include Uppercase characters in your passwrod?")
   var passnum = window.confirm("Do you want to include numbers in your password?")
   var passspec = window.confirm("Do you want to include special characters in your password?")
+ 
+  // Lists to loop through
+  var lowerlist = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+  var upperlist = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+  var numlist = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+  var speclist = ["!", "@", "#", "$", "%", "^", "&", "*", "?", "+", "_"]
 
  // empty array to hold the choices of the user on questions above
   var userChoices = []
  
  // true false statements to questions in order to know which characters to include in final password
   if (passlower === true) {
-    userChoices.push(lowercharcodes)
+    userChoices.push(lowerlist)
   }
 
   if (passupper === true) {
-    userChoices.push(uppercharcodes)
+    userChoices.push(upperlist)
   }
 
   if (passnum === true) {
-    userChoices.push(numcharcodes)
+    userChoices.push(numlist)
   }
 
   if (passspec === true) {
-    userChoices.push(speccasecharcodes)
+    userChoices.push(speclist)
   }
+ // if user doesnt want any types of characters, it will default to lowercase characters
+  if (userChoices.length === 0) {
+    userChoices.push(lowerlist)
+  }
+
+  var finalPassword = ""
 
   return userChoices
 
@@ -76,5 +90,3 @@ function writePassword() {
   passwordText.value = password;
 
 }
-
-97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,48,49,50,51,52,53,54,55,56,57,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,58,59,60,61,62,63,64,91,92,93,94,95,96
