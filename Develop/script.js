@@ -29,18 +29,19 @@ function generatePassword () {
     return
   }
 
- // Windows asking if user wants lowercase, uppercase, number or special characters in the generated password
+ // Windows asking if user wants lowercase, uppercase, number or special characters in the generated password with corresponding list array
   var passlower = window.confirm("Do you want to include lowercase characters in your password?")
-  var passupper = window.confirm("Do you want to include Uppercase characters in your passwrod?")
-  var passnum = window.confirm("Do you want to include numbers in your password?")
-  var passspec = window.confirm("Do you want to include special characters in your password?")
- 
-  // Lists to loop through
   var lowerlist = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-  var upperlist = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-  var numlist = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-  var speclist = ["!", "@", "#", "$", "%", "^", "&", "*", "?", "+", "_"]
 
+  var passupper = window.confirm("Do you want to include Uppercase characters in your passwrod?")
+  var upperlist = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+  var passnum = window.confirm("Do you want to include numbers in your password?")
+  var numlist = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+
+  var passspec = window.confirm("Do you want to include special characters in your password?")
+  var speclist = ["!", "@", "#", "$", "%", "^", "&", "*", "?", "+", "_"]
+ 
  // empty array to hold the choices of the user on questions above
   var userChoices = []
  
