@@ -1,6 +1,6 @@
 # Password Generator Starter Code
 
-I starttd the code to prompt the user to choose the criteria for their password.
+I started the code to prompt the user to choose the criteria for their password.
 Things I was able to get done:
     1. Prompted the user to choose a length from 8-128 characters
     2. If a non number character was entered or a number out of range, the user would be promted to enter a number again.
