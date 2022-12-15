@@ -1,93 +1,85 @@
-// Tried to use the character codes before typing lists for characters
+function generatePassword() {
+  var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  var uppercaseCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  var lowercaseCharacters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  var specialCharacters = ['@', '%', '+', '\\', '/', "'", '!', '#', '$', '^', '?', ':', ',', ')', '(', '}', '{', ']', '[', '~', '-', '_', '.'];
+  var possibleCharacters = []
 
-//const lowercharcodes = arrayLowToHigh(97, 122)
-//const uppercharcodes = arrayLowToHigh(65, 90)
-//const numcharcodes = arrayLowToHigh(48, 57)
-//const speccasecharcodes = arrayLowToHigh(33, 47).concat(
-//  arrayLowToHigh(58, 64)
-//).concat(
-//  arrayLowToHigh(91, 96)
-//)
+  numberOfCharacters = prompt("How many characters do you want in your password? Choose between 8-128 characters.");
+  if (numberOfCharacters < 8 || numberOfCharacters > 128) {
+    return "Please choose a valid number of characters.";
+  } else if (isNaN(numberOfCharacters)) {
+    numberOfCharacters = prompt("Please enter a valid number.");
+  }
+  else {
+    alert("Your password will be " + numberOfCharacters + " characters long.");
+    
+  }
 
-// Calls Button from HTML
+  hasLowercase = confirm("Do you want lowercase characters?");
+  if (hasLowercase) {
+    var turnToLowercase = alert("Your password will have lowercase characters.");
+  }
+  else {
+    alert("Your password will NOT have lowercase characters.");
+  }
+
+  hasUppercase = confirm("Do you want uppercase characters?");
+  if (hasUppercase) {
+    alert("Your password will have uppercase characters.");
+  }
+  else {
+    alert("Your password will NOT have uppercase characters.");
+  }
+
+  hasNumbers = confirm("Do you want to use numbers?");
+  if (hasNumbers) {
+    alert("Your password will have numbers.");
+  }
+  else {
+    alert("Your password will NOT have numbers.");
+  }
+
+  hasSpecial = confirm("Do you want special characters?");
+  if (hasSpecial) {
+    alert("Your password will have special characters.");
+  }
+  else {
+    alert("Your password will NOT have special characters.");
+  }
+
+  if (hasLowercase === false && hasUppercase === false && hasNumbers === false && hasSpecial === false) {
+    return "Please select at least one character type.";
+  };
+
+  if (hasLowercase) {
+    possibleCharacters = possibleCharacters.concat(lowercaseCharacters);
+  }
+  if (hasUppercase) {
+    possibleCharacters = possibleCharacters.concat(uppercaseCharacters);
+  }
+  if (hasNumbers) {
+    possibleCharacters = possibleCharacters.concat(numericCharacters);
+  }
+  if (hasSpecial) {
+    possibleCharacters = possibleCharacters.concat(specialCharacters);
+  }
+
+  let finalPassword = ""
+  for (let i = 0; i < numberOfCharacters; i++) {
+    let rng =[Math.floor(Math.random() * possibleCharacters.length)];
+    // or finalPassword += possibleCharacters[rng];
+    finalPassword = finalPassword + possibleCharacters[rng];
+  }
+  return finalPassword;
+};
+
 var generateBtn = document.querySelector("#generate");
 
-// Add event listener to generate button; will wait for user to click button
-generateBtn.addEventListener("click", writePassword);
-
-// After button is clicked, an alert window should be brought up
-
-// Assignment code here
-function generatePassword () {
- // Asks user in window how long password should be
-  var passlength = window.prompt("Password length? 8-128 characters")
-  var passlength = parseInt(passlength)
-
- // prompts error if info entered is not a number or within range
-  if (isNaN(passlength) || passlength < 8 || passlength > 120) {
-    window.alert("Please enter a valid number 8-128!")
-    return
-  }
-
- // Windows asking if user wants lowercase, uppercase, number or special characters in the generated password with corresponding list array
-  var passlower = window.confirm("Do you want to include lowercase characters in your password?")
-  var lowerlist = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-
-  var passupper = window.confirm("Do you want to include Uppercase characters in your passwrod?")
-  var upperlist = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-
-  var passnum = window.confirm("Do you want to include numbers in your password?")
-  var numlist = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-
-  var passspec = window.confirm("Do you want to include special characters in your password?")
-  var speclist = ["!", "@", "#", "$", "%", "^", "&", "*", "?", "+", "_"]
- 
- // empty array to hold the choices of the user on questions above
-  var userChoices = []
- 
- // true false statements to questions in order to know which characters to include in final password
-  if (passlower === true) {
-    userChoices.push(lowerlist)
-  }
-
-  if (passupper === true) {
-    userChoices.push(upperlist)
-  }
-
-  if (passnum === true) {
-    userChoices.push(numlist)
-  }
-
-  if (passspec === true) {
-    userChoices.push(speclist)
-  }
- // if user doesnt want any types of characters, it will default to lowercase characters
-  if (userChoices.length === 0) {
-    userChoices.push(lowerlist)
-  }
-
-  var finalPassword = ""
-
-  return userChoices
-
-
-}
-
-// function looping through the character library
-function arrayLowToHigh(low, high) {
-  const array = []
-  for (let i = low; i <= high; i++) {
-    array.push(i)
-  }
-  return array
-}
-
-
-// Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
+
+generateBtn.addEventListener("click", writePassword);
